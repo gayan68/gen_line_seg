@@ -87,23 +87,4 @@ These outputs are stored in the specified logging directory.
 
 ---
 
-## Citation
 
-If you use this implementation, please cite the corresponding paper:
-
-```bibtex
-@article{your_paper_reference,
-  title={Generalization of Text Line Segmentation for HTR in Historical Documents},
-  author={...},
-  journal={...},
-  year={...}
-}
-```
-
-Replace the citation information with the final published reference.
-
----
-
-## License
-
-Please refer to the repository license for usage and distribution terms.
