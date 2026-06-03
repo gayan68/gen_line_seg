@@ -49,8 +49,6 @@ def main():
     parser.add_argument("config_file")
     parser.add_argument("log_dir")
 
-    parser.add_argument("--crnn_train_strategy", default="crnn", type=str)
-
     parser.add_argument('--learning_rate', default=5e-4, type=float)
     parser.add_argument('--batch_size', default=4, type=int)
     parser.add_argument('--num_workers', default=0, type=int)
@@ -90,7 +88,7 @@ def main():
     parser.add_argument("--wandb_proj_name", default="", help="", type=str)
     parser.add_argument('--save_intermediate', default=False, type=bool)
 
-    parser.add_argument('--train_strategy', default="cnn", type=str)
+    parser.add_argument('--train_strategy', default="crnn", type=str)
 
     print("===============================================================================")
 
@@ -135,17 +133,6 @@ def main():
     # cnn_cfg = [(2, 64), 'M', (4, 128), 'M', (4, 256)]
     # head_cfg = (256, 3)  # (hidden dimension, num_layers blstm)
     # width_divisor = 8
-    if args.crnn_train_strategy == "cnn":
-        head_type = "cnn"
-    elif args.crnn_train_strategy == "fine-tune_LSTM":
-        if args.PRETRAINE_MODEL != "" and args.PRETRAINE_OPTIM != "":        
-            head_type = "crnn"
-        else:
-            raise ValueError(f"Unknown train strategy: {args.train_strategy} or Missing pretrained model/optimizer for fine-tune_LSTM strategy")
-    else:
-        head_type = "crnn"
-
-    print(f"head_type: {head_type}")
 
     cnn_cfg = config_values["cnn_cfg"]
     head_cfg = config_values["head_cfg"]  # (hidden dimension, num_layers blstm)
@@ -155,7 +142,7 @@ def main():
     # head_cfg = tuple(args.head_cfg) # (hidden dimension, num_layers blstm)
     # width_divisor = args.width_divisor
 
-    model_reco = CRNN(cnn_cfg, head_cfg, charset.get_nb_char(), head_type)
+    model_reco = CRNN(cnn_cfg, head_cfg, charset.get_nb_char())
 
     # Data
     fixed_size_img = (args.height_max, args.width_max)
