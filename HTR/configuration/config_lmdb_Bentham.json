@@ -1,0 +1,7 @@
+{
+  "dataset_folder": "../../../DATASETS/Bentham/box_lines_dataset",
+  "charset_file": "charset/Bentham-charset.txt",
+  "cnn_cfg": [[2, 64], "M", [4, 128], "M", [4, 256]],
+  "head_cfg": [256, 3],
+  "width_divisor": 8
+}

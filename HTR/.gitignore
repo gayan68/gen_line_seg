@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/venv/
+/.venv/
+model_pretrained/
+/__pycache__/
+*.pyc
+.idea/
+*.pt
+
+
+

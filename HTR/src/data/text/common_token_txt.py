@@ -1,0 +1,4 @@
+PAD_STR_TOKEN = "<pad>"
+BLANK_STR_TOKEN = "<BLANK>"
+
+CTC_PAD = 10000
